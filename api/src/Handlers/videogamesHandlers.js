@@ -1,4 +1,5 @@
-const { getDbVideogames, getApiVideogames } = require ("../controllers/videogamesController");
+const { getDbVideogames, getApiVideogames } = require ("../controllers/getVideogamesController");
+const { getVideogameById } = require ("../controllers/getVideogameById.js")
 
 const  getVideoGamesHandler = async (req, res ) => {
     try{
@@ -12,10 +13,17 @@ const  getVideoGamesHandler = async (req, res ) => {
     }
 };
 
-// const getUserHandler = (req, res) => {
-//         const {id} = req.params; 
-//     res.send(`Va a enviar el detalle de el usuario de ID ${id}`);
-// };
+//--------------------------------ID-------------------------
+
+const getVideoGamesByIdHandler = async (req, res) => {
+        const { id } = req.params; //obtener id de params 
+    try{
+        const videogame = await getVideogameById(id);
+        res.status(200).json(videogame);
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+};
 
 // const createUsersHandler = async (req, res) => {
 //     try{
@@ -29,7 +37,7 @@ const  getVideoGamesHandler = async (req, res ) => {
 
 module.exports={
     getVideoGamesHandler, 
-    
+    getVideoGamesByIdHandler,
 }
 
 //Tratar que handler no interactue con BDD

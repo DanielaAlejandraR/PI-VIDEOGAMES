@@ -48,4 +48,4 @@ const getApiVideogames = async () => {
 
 module.exports = { getDbVideogames, getApiVideogames };
 
-//const { name } = req.query; //La propiedad name se esta guardando dentro de un objeto que se llama query, que esta dentro de req 
+
