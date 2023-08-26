@@ -1,6 +1,6 @@
 import "./navbar.styles.css"
 
-function NavBar() {
+function Navbar() {
     return(
     <div className="search-box">
         <form>
@@ -11,4 +11,4 @@ function NavBar() {
     )
 }
 
-export default NavBar; 
+export default Navbar; 

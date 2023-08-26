@@ -1,0 +1,68 @@
+.cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcomeCont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(21, 3, 3);
+    width: 30%;
+    height: 40px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.welcome{
+    margin : 0px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.name{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: rgb(15, 1, 24);
+}
+
+.botonCont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(25, 4, 4);
+    width: 20%;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton{
+    color: #e7ea1d;
+    border-style: none;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    padding-left: 120px;
+    padding-right: 120px;
+    background-color: rgb(25, 4, 4);
+}
+
+.botonCont:hover{
+    box-shadow: 20px 20px 20px 10px rgba(227, 130, 221, 0.4);  
+    cursor: pointer;
+}

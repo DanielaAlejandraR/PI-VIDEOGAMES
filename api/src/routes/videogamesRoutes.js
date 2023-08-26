@@ -1,13 +1,15 @@
 const { Router } = require("express");
-const { getVideoGamesHandler, getVideoGamesByIdHandler } = require("../Handlers/videogamesHandlers")
+const { getVideoGamesHandler, getVideoGameByIdHandler, postVideogameHandler } = require("../Handlers/videogamesHandlers")
 
 const routerVideoGames = Router();
 
 
 routerVideoGames.get("/", getVideoGamesHandler); 
 
-routerVideoGames.get("/:id", getVideoGamesByIdHandler);//:id param, la existencia de un param me determina una ruta nueva 
+routerVideoGames.get("/:id", getVideoGameByIdHandler);//:id param, la existencia de un param me determina una ruta nueva 
 
-// usersRouter.post ("/", createUsersHandler);
+routerVideoGames.get("/name", getVideoGamesHandler);
+
+routerVideoGames.post ("/", postVideogameHandler);
 
 module.exports = routerVideoGames;

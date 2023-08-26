@@ -1,15 +1,15 @@
+import Navbar from "../../components/Nav/navBar";
+import Cards from "../../components/Cards/cards";
 import "./home.styles.css"
-import Navbar from "../../components/navBar/navBar";
-import Cards from "../../components/cards/cards.component";
 
-function Home () {
+const Home = () => {
     return(
-        <div className="home">
-            <h2 className="home-title">Home</h2>
+        <div className="Home">
+            <p className="homeTitle">Home Page</p>
             <Navbar/>
             <Cards/>
         </div>
-    )
+    );
 }
 
 export default Home;

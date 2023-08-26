@@ -1,13 +1,12 @@
 .card-container{
     display: flex; /* contenedores se muevan libre en area*/
     flex-direction: column; /* Separe y ponga en linea*/
-    background-color: rgba(54, 219, 249, 0.937);
-    border: 2px solid grey;
-    border-radius: 5px;
-    padding: 25px;/* Espacio interior margen interno*/
+    background-color: rgba(236, 148, 239, 0.642);
+    border: 5px solid rgb(121, 22, 203);
+    border-radius: 10px;
+    padding: 15px;/* Espacio interior margen interno*/
     cursor: pointer;
 }
-
 .card-container:hover{
     transform: scale(1.05);/* Cuando se pase cursor que se agrande */
 }

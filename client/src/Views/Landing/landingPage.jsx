@@ -4,6 +4,7 @@ import style from "./landing.module.css"
 
 const LandingPage  = () => {
     return(
+        <>
         <div className={style.cont}>
             <div className={style.welcomeCont}>
                 <p className={style.welcome}>WELCOME TO</p>
@@ -15,6 +16,7 @@ const LandingPage  = () => {
                 <NavLink to="/home"><button className={style.boton}>Log in</button></NavLink>
             </div>
         </div>
+        </>
     )
 }
 

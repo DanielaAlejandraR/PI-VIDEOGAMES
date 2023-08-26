@@ -1,44 +1,47 @@
-const { getDbVideogames, getApiVideogames } = require ("../controllers/getVideogamesController");
-const { getVideogameById } = require ("../controllers/getVideogameById.js")
+const { getVideoGames } = require ("../controllers/getAllVideogames");
+const { getVideoGameById } = require ("../controllers/getVideogameById.js");
+const { getVideoGameByName } = require ("../controllers/getVideogamesByName");
+const { postNewVideogame } = require ("../controllers/postVideogame");
 
-const  getVideoGamesHandler = async (req, res ) => {
-    try{
-    const dbVideogames = await getDbVideogames();//Llama a la función que obtiene los datos de la BDD, Una vez que se resuelve la promesa, los datos obtenidos de la base de datos se almacenan en la constante dbVideogames, 
-    const apiVideogames = await getApiVideogames();//llamar a una función que obtenga datos de la API externa, Obtener videojuegos desde la API 
-    const allVideogames =[...dbVideogames, ...apiVideogames];//Unificar respuesta en formato, toma los dos arreglos y combina sus elementos en uno nuevo, (spread operator)desespaqueta los elementos del arreglo cada elemento se convierte en un elemento individual en el nuevo arreglo  
+//------------------------ALL- NAME---------------------------
 
-    res.status(200).json(allVideogames);}//Cuando tenga los datos, responde con los datos 
-    catch(error){
+const getVideoGamesHandler = async (req, res) => {// Defino función asincrona que maneja solicitudes
+    try {
+        const name = req.query.name//Extrae valor de parametro de consulta name de la URL 
+        const response = name? await getVideoGameByName(name) : await getVideoGames();//Si name tiene un valor se llama la función, si no se proporciona un nombre se llama a la otra función de all
+        res.status(200).json(response);
+    } catch (error) {
         res.status(400).json({error: error.message});
     }
 };
 
 //--------------------------------ID-------------------------
 
-const getVideoGamesByIdHandler = async (req, res) => {
-        const { id } = req.params; //obtener id de params 
-    try{
-        const videogame = await getVideogameById(id);
-        res.status(200).json(videogame);
-    }catch(error){
-        res.status(400).json({error: error.message})
+const  getVideoGameByIdHandler = async (req, res) => {
+    const id = req.params.id;// parametro de ruta id de la URL  
+    const source = isNaN(id)? "DB" : "API";//si es numero valido
+    try {
+        const videogameId = await getVideoGameById(id, source) //se llama a función para obtener info según id y fuente determinada 
+        res.status(200).json(videogameId)
+    } catch (error) {
+        res.status(400).send({error: error.message})
     }
 };
 
-// const createUsersHandler = async (req, res) => {
-//     try{
-//         const { name, email, phone } = req.body;//body es una propiedad de la request donde viaja la info name, email, phone 
-//         const newUser = await createUser(name, email, phone);
-//         res.status(201).json(newUser);
-//     }catch (error){
-//         res.status(400).json({error: error.message});
-//     }
-// };
+//-------------------------------POST--------------------
 
-module.exports={
-    getVideoGamesHandler, 
-    getVideoGamesByIdHandler,
-}
+const postVideogameHandler = async (req, res) => {
+    const { name, description, platforms, image, releaseDate, rating, genres } = req.body;//información necesaria para  para crear nuevo videojuego 
+    try{
+        if ( !name || !description || !platforms || !image || !releaseDate ||  !rating || !genres ) {//verifico campos necesarios
+            throw Error('Missing game info!')
+        } else {
+            const gameToAdd = await postNewVideogame({ name, description, platforms, image, releaseDate, rating, genres})// si todos los campos estan invoco funcion con todos los datos del nuevo juego
+        return res.status(200).json(gameToAdd);
+    }
+    }catch (error){
+        res.status(400).json({error: error.message});
+    }
+};
 
-//Tratar que handler no interactue con BDD
-// Try catch en handlers 
+module.exports={ getVideoGamesHandler,  getVideoGameByIdHandler,  postVideogameHandler }

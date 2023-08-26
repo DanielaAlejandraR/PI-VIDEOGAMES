@@ -4,8 +4,8 @@ function Card() {
     return(
         <div className="card-container">
             <h1>Nombre:</h1>
-            <p>Email:</p>
-            <p>Telefono:</p>
+            <p>Imagen:</p>
+            <p>Generos:</p>
         </div>
     )
 }
