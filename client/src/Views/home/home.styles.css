@@ -1,0 +1,13 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-title{
+    margin-top: 75px;
+    margin-bottom: 50px;
+    font-size: 76px;
+    color: brown;
+    font-family: "Bigelow Rules";
+}
