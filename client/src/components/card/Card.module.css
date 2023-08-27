@@ -1,4 +1,4 @@
-.card-container{
+.cardcontainer{
     display: flex; /* contenedores se muevan libre en area*/
     flex-direction: column; /* Separe y ponga en linea*/
     background-color: rgba(236, 148, 239, 0.642);
@@ -9,4 +9,24 @@
 }
 .card-container:hover{
     transform: scale(1.05);/* Cuando se pase cursor que se agrande */
+}
+
+.image{
+    width: 80%;
+    height: 150px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.title {
+    /* height: 35px; */
+    margin: 10px; 
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.genres {
+    margin: 0px 5px 0px 5px;
+    font-size: 13px;
 }

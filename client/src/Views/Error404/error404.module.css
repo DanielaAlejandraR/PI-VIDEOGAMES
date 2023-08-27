@@ -1,0 +1,36 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(212, 21, 21);
+    flex: 1;
+}  
+
+.errorCode {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.errorMessage {
+    font-size: 45px;
+    margin-top: 0px;
+    color: black;
+}
+
+.goBackButton {
+    margin: 3px;
+    padding: 5px;
+    background-color: var(--mygrey2opaque);
+    color: rgb(56, 16, 16);
+    height: 100%;
+    border: 4px solid var(--mylightblue2);
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.goBackButton:hover {
+    background-color: var(--mylightblue2);
+    color: black;
+    border: solid white 5px;
+}

@@ -1,18 +1,19 @@
-import { GET_ALL_VIDEOGAMES } from "./actions"
+import { GET_VIDEOGAMES } from "./actions"
 
-let initialState = {allVg: []}
+const initialState = {VideoGames: [], };
 
-const rootReducer = (state = initialState,action) => {
+const rootReducer = (state = initialState, action) => {
     switch(action.type){
 
-        case GET_ALL_VIDEOGAMES:
+        case GET_VIDEOGAMES:
+            const VideoGames = action.payload;
             return{
                 ...state,
-                allVg: action.payload
+                VideoGames: [...VideoGames],
             }
         default:
-            return state
-    }
-}
+            return { ...state};
+    };
+};
 
 export default rootReducer

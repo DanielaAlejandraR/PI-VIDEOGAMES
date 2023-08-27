@@ -1,7 +1,7 @@
-.card-list{
+.cardlist{
     width: 85vw;/* mi contenedor ocupe el 85% del viewport*/
     margin: 0 auto;/*No me agregue espacio extra hacia ningun lado */
     display: grid;/* divide contenedor en pequeños contenedores */
-    grid-template-columns: 1fr 1fr 1fr 1fr; /*4 columnas del mismo tamaño*/
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /*4 columnas del mismo tamaño*/
     grid-gap: 25px;/*Espacio entre cada tarjeta de 20*/
 }

@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from "./redux/store";
-import { Provider } from "react-redux";//provee a mi app de estado creado
+import { Provider } from "react-redux";// proporcionar el store a los componentes.
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";//para habilitar la navegación basada en URL
+import axios from "axios";
 
-//import './index.css';
+import './index.css';
+
+axios.defaults.baseURL = "http://localhost:3001";
 
 ReactDOM.render(
   <React.StrictMode>
