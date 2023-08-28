@@ -1,16 +1,16 @@
 import styles from "./Card.module.css";
+import { NavLink } from "react-router-dom";
 
-const Card = ({ name, image, genres = []}) => {
+
+const Card = ({ id, name, image, genres}) => {
   return (
+    <NavLink to={`/detail/${id}`} className={styles.NavLink}>
     <div className={styles.cardcontainer}>
-      <h1 className={styles.title}>{name}</h1>
       <img className={styles.image}src={image} alt={name}/>
-    <ul>
-      {genres.map((genre, index) => (
-        <li className={styles.genres} key={index}>{genre.name}</li>
-      ))}
-    </ul>
+      <h1 className={styles.title}>{name}</h1>
+      <h3 className={styles.genres}>{genres}</h3>
     </div>
+    </NavLink>
   );
 };
 

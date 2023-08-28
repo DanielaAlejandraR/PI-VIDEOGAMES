@@ -1,14 +1,25 @@
-.homeTitle{
-    margin-top: 75px;
-    margin-bottom: 50px;
-    font-size: 76px;
-    color: rgb(0, 6, 10);    
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.mainContainer {
+    margin: 0px;
+    flex: 1;
+    color: black;
 }
 
-.Home{
+.mobileSecondPagination {
+    color: black;
+    background-color: blueviolet;
+}
+
+/* @media screen and (max-width: 767px) {
+    .mobileSecondPagination {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
     align-items: center;
 }
-
+.mainContainer {
+    margin-top: 100px;
+    }
+} */

@@ -1,7 +1,0 @@
-.search-box{
-    border: none;
-    padding: 10px; /*para que placeholder no este pegado a borde de caja */
-    width : 150px;
-    margin-bottom: 30px;
-    line-height: 30px;
-}

@@ -1,3 +1,6 @@
+.NavLink {
+    text-decoration: none;
+}
 .cardcontainer{
     display: flex; /* contenedores se muevan libre en area*/
     flex-direction: column; /* Separe y ponga en linea*/
@@ -12,8 +15,8 @@
 }
 
 .image{
-    width: 80%;
-    height: 150px;
+    width: 170px;
+    height: 160px;
     border-radius: 8px 8px 0px 0px;
 }
 
@@ -27,6 +30,7 @@
 }
 
 .genres {
-    margin: 0px 5px 0px 5px;
-    font-size: 13px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: #000000;
 }

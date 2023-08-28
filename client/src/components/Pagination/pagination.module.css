@@ -1,0 +1,64 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.button, .pageButtonSmallDevice {   
+      /* two classNames to avoid the hover in small device */
+    margin: 5px;
+    padding: 8px;
+    background-color: var(--mygrey2);
+    color: white;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.button:hover {
+    background-color: rgb(139, 183, 187);
+    background-color: var(--mygrey4);
+    color: black;
+}
+
+.isActive {
+    background-color: var(--mylightblue2);
+    color: black;
+}
+
+.pageButtonSmallDevice {
+    display: none;
+}
+
+.arrows {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.arrowButton {
+    background-color: var(--mygrey3);
+}
+
+.disabled {
+    background-color: var(--mygrey3opaque);
+    color: var(--mygrey);
+}
+
+.disabled:hover {
+    background-color: var(--mygrey3opaque);
+    color: var(--mygrey);
+}
+
+@media screen and (max-width: 1023px) {
+    .pageButtonLargeDevice {
+    display: none;
+    }
+    .pageButtonSmallDevice {
+    display: flex;
+    }
+}

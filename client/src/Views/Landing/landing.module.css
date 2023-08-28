@@ -1,28 +1,29 @@
-.cont{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+.mainContainer{
     height: 100vh;
+    width: 100vw;
+    background-image: url("../../assets/Landing.jpeg");
+    background-position: center;
+    background-size: 120%;
 }
 
 .welcomeCont{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    background-color: rgb(21, 3, 3);
-    width: 30%;
-    height: 40px;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 120px;
+    margin-top: 220px;
+    font-size: 50px;
 }
 .welcome{
     margin : 0px;
     color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     font-weight: bold;
+    margin-left: 50px;
 }
 
 .name{
@@ -30,39 +31,28 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     font-weight: bolder;
-    font-size: 50px;
-    display:flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: rgb(15, 1, 24);
-}
-
-.botonCont{
-    display: flex;
-    flex-direction: row;
+    font-size: 80px;
+    color: rgb(206, 152, 239);
+    flex-direction: column;
     flex-wrap: wrap;
-    background-color: rgb(25, 4, 4);
-    width: 20%;
-    height: 30px;
-    border-radius: 20px;
-    margin-top: 35px;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 40px;
+    font-size: 70px;
 }
 
 .boton{
-    color: #e7ea1d;
-    border-style: none;
+    color: #131401;
     font-weight: bolder;
-    font-size: 20px;
+    font-size:30px;
     cursor: pointer;
-    padding-left: 120px;
-    padding-right: 120px;
-    background-color: rgb(25, 4, 4);
-}
-
-.botonCont:hover{
-    box-shadow: 20px 20px 20px 10px rgba(227, 130, 221, 0.4);  
-    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px;
+    margin-left: 120px;
+    width: 210px;
+    height: 80px;
+    border-radius: 90%;
+    background-color: rgb(234, 224, 22);
+    animation: pulse 2s infinite;
 }
