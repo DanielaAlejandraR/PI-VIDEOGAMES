@@ -57,7 +57,55 @@
     background-color: var(--mylightblue2);
   }
 
-.errorMsg {
-    color: red;
-    margin-top: 5px;
-}
+  .filtersAndSortsContainer {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .creatorSelect,
+  .genreSelect,
+  .sortSelect,
+  .resetButton {
+    width: 150px;
+    background-color: rgb(51, 2, 52);
+    border: 1px solid var(--mygrey4);
+    color:aliceblue;
+    height: 100%;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 18px;
+  }
+  
+  .creatorSelect:hover,
+  .genreSelect:hover,
+  .sortSelect:hover {
+    color: var(--mylightblue);
+    box-shadow: 0 0 5px var(--mylightblue2);
+  }
+  
+  .resetButton:hover {
+    color: rgb(222, 203, 239);
+    background-color:blueviolet;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .searchbarContainer {
+      width: 250px;
+    }
+    .searchInput {
+      font-size: 14px;
+    }
+    .creatorSelect,
+    .genreSelect,
+    .sortSelect,
+    .resetButton {
+      width: 75px;
+      margin: 5px;
+      font-size: 14px;
+    }
+  }

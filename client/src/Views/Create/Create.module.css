@@ -1,0 +1,194 @@
+/* MAIN CONTAINER */
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    background-color: rgba(244, 143, 221, 0.526);
+
+  }
+  
+  /* FORM */
+  .formContainer {
+    background-color: var(--mygreyopaque);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    
+  }
+  
+  .nameAndReleasedAndRatingContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    
+  }
+  
+  .label {
+    display: flex;
+    flex-direction: column;
+    margin: 7px;
+    padding: 1px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(6, 1, 1);
+    font-size: 18px;
+  }
+  
+  .input {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+    border-radius:10px;
+    border: solid rgb(20, 1, 1) 1px;
+    background-color: var(--mygrey3opaque);
+    color:black;
+  }
+  
+  .nameInput {
+    width: 80%;
+    color:black
+  }
+  
+  .dateInput {
+    width: fit-content;
+  }
+  
+  .ratingInput {
+    width: 100px;
+  }
+  
+  /* PLATFORMS */
+  .platformsContainer,
+  .checkboxContainer {
+    background-color: var(--mygrey3opaque);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 7px;
+    padding: 5px;
+    border-radius:10px;
+    border: solid rgb(9, 0, 0) 1px;
+  }
+  
+  .platformsSubContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin: 2px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* GENRES */
+  .checkboxSubcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2px;
+  }
+  
+  .genreLabel {
+    align-items: center;
+    margin: 5px;
+  }
+  
+  .genreInput {
+    margin: 5px;
+  }
+  
+  /* ERROR MESSAGE */
+  .errorMessage {
+    color: var(--myred2);
+    font-weight: bold;
+  }
+  
+  /* BUTTONS */
+  .buttonsContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* SUBMIT */
+  .submitButton {
+    background-color: var(--mylightblue2);
+    color: rgb(15, 6, 6);
+    font-weight: bold;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: solid rgb(7, 1, 1) 4px;
+    font-size: 25px;
+    margin: 30px;
+  }
+  
+  .submitButton:hover {
+    background-color: var(--mylightblue);
+    color: rgb(43, 23, 23);
+    font-size: 35px;
+    height: 60px;
+    width: 60px;
+  }
+  
+  /* RESET */
+  
+  .resetButton {
+    background-color: var(--myred);
+    color: rgb(26, 9, 9);
+    font-weight: bold;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: solid rgb(15, 11, 11) 4px;
+    font-size: 25px;
+    margin: 30px;
+  }
+  
+  .resetButton:hover {
+    background-color: var(--myred2);
+    color: black;
+    font-size: 35px;
+    height: 60px;
+    width: 60px;
+  }
+  
+.selectInput{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #151313;
+  border-radius: 4px;
+  background-color: rgb(233, 186, 230);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.selectInput option:checked {
+  background-color: #c08b8b;
+}
+  /* MEDIA QUERIES */
+  @media screen and (max-width: 1279px) {
+    .mainContainer {
+      flex-direction: column;
+    }
+    .formContainer {
+      width: 100%;
+    }
+    .nameAndReleasedAndRatingContainer {
+      flex-direction: column;
+    }
+    .preview {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .nameAndReleasedAndRatingContainer {
+      margin-top: 100px;
+    }
+  }

@@ -31,12 +31,12 @@ const  getVideoGameByIdHandler = async (req, res) => {
 //-------------------------------POST--------------------
 
 const postVideogameHandler = async (req, res) => {
-    const { name, description, platforms, image, releaseDate, rating, genres } = req.body;//información necesaria para  para crear nuevo videojuego 
+    const { name, description, platforms, image, released, rating, genres } = req.body;//información necesaria para  para crear nuevo videojuego 
     try{
-        if ( !name || !description || !platforms || !image || !releaseDate ||  !rating || !genres ) {//verifico campos necesarios
+        if ( !name || !description || !platforms || !image || !released ||  !rating || !genres ) {//verifico campos necesarios
             throw Error('Missing game info!')
         } else {
-            const gameToAdd = await postNewVideogame({ name, description, platforms, image, releaseDate, rating, genres})// si todos los campos estan invoco funcion con todos los datos del nuevo juego
+            const gameToAdd = await postNewVideogame({ name, description, platforms, image, released, rating, genres})// si todos los campos estan invoco funcion con todos los datos del nuevo juego
         return res.status(200).json(gameToAdd);
     }
     }catch (error){

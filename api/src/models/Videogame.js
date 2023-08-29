@@ -19,19 +19,19 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     platforms:{
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
     image:{
       type: DataTypes.TEXT,
       allowNull: false
     },
-    releaseDate: {
-      type: DataTypes.STRING,
+    released: {
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     rating:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     }, 
   },{ timestamps: false}// Para que no aparezca fecha y hora en que cree registros 

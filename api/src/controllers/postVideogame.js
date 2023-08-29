@@ -1,9 +1,9 @@
 const { Videogame, Genre } = require("../db");
 
-const postNewVideogame = async({name, description, platforms, image, releaseDate, rating, genres})=>{//Defino función asincrona que acepta objeto desestructurado con las propiedades
+const postNewVideogame = async({name, description, platforms, image, released, rating, genres})=>{//Defino función asincrona que acepta objeto desestructurado con las propiedades
     const [newVideoGame, created] = await Videogame.findOrCreate({//utilizo modelo Videogame y su metodo findOrCreate para buscar un VG por nombre, si no se encuentra se crea con los valores en el objeto default 
         where: {name},//especifico filtro busqueda 
-        defaults: { name, description, platforms, image, releaseDate, rating }
+        defaults: { name, description, platforms, image, released, rating }
     })//el resultado sera un array con dos elementos newVideoGame y Created(booleano)
 
     if(created === true){// si se creo el videojuego como se determino 

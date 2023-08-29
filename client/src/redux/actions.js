@@ -3,13 +3,11 @@ import axios from "axios";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const UPDATE_PAGE_NUMBER = "UPDATE_PAGE_NUMBER";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
-
-// export const RESET_FILTERS = "RESET_FILTERS";
-// export const FILTER_BY_CREATOR = "FILTER_BY_CREATOR";
-// export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
-// export const  SORT_BY_ALPHABET = " SORT_BY_ALPHABET";
-// export const SORT_BY_RATING = "SORT_BY_RATING";
-// export const UPDATE_VG = "UPDATE_VG";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
+export const GET_GENRES = "GET_GENRES";
+export const UPDATE_VG  = "UPDATE_VG ";
+export const FILTER_BY_CREATOR  = "FILTER_BY_CREATOR ";
+export const RESET_FILTERS  = "RESET_FILTERS";
 
 
 export const getVideoGames = () => {
@@ -43,43 +41,41 @@ export const searchByName = (vgName) => {//Defino acción
     };
 };
 
-// export const resetFilters = () => {
-//     return {
-//         type: "RESET_FILTERS"
-//     };
-// };
+export const getGenres = () => {
+    return async (dispatch) => {
+        const API_URL = '/genres'; 
+        const response = await axios.get(API_URL);
+        const genres = response.data;
+        dispatch({
+            type: "GET_GENRES",
+            payload: genres
+        });
+    };
+};
 
-// export const filterByCreator = (creator) => {
-//     return {
-//         type: "FILTER_BY_CREATOR",
-//         payload: creator
-//     };
-// };
+export const filterByGenre = (genres) => {
+    return {
+        type: "FILTER_BY_GENRE",
+        payload: genres
+    };
+};
 
-// export const filterByGenre = (genres) => {
-//     return {
-//         type: "FILTER_BY_GENRE",
-//         payload: genres
-//     };
-// };
+export const updateWithNewVg = (newVg) => {
+    return {
+        type: "UPDATE_VG",
+        payload: newVg
+    }
+}
 
-// export const sortByAlphabet = (order) => {
-//     return {
-//         type: " SORT_BY_ALPHABET",
-//         payload: order
-//     };
-// };
+export const filterByCreator = (creator) => {
+    return {
+        type: "FILTER_BY_CREATOR",
+        payload: creator
+    };
+};
 
-// export const sortByRating = (order) => {
-//     return {
-//         type: "SORT_BY_RATING",
-//         payload: order
-//     };
-// };
-
-// export const updateWithNewVg = (newVg) => {
-//     return {
-//         type: "UPDATE_VG",
-//         payload: newVg
-//     }
-// }
+export const resetFilters = () => {
+    return {
+        type: "RESET_FILTERS",
+    };
+};
