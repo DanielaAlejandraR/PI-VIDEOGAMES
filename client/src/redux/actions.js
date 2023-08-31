@@ -5,10 +5,12 @@ export const UPDATE_PAGE_NUMBER = "UPDATE_PAGE_NUMBER";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const GET_GENRES = "GET_GENRES";
+export const GET_DETAIL  = "GET_DETAIL";
 export const UPDATE_VG  = "UPDATE_VG ";
 export const FILTER_BY_CREATOR  = "FILTER_BY_CREATOR ";
 export const RESET_FILTERS  = "RESET_FILTERS";
-
+export const SORT_BY_ALPHABET  = "SORT_BY_ALPHABET";
+export const SORT_BY_RATING  = "SORT_BY_RATING";
 
 export const getVideoGames = () => {
     const API_URL = '/videogames'; 
@@ -32,12 +34,23 @@ export const searchByName = (vgName) => {//Defino acción
     const API_URL = `/videogames?name=${vgName}`; 
 
     return async (dispatch) => {
+        try{
             const response = await axios.get(API_URL);
             const vgByName = response.data;
             dispatch({//función asincrona para enviar acciones al store y actualizar estado
                 type: "SEARCH_BY_NAME",
                 payload: vgByName//contiene datos de videojuego
             });
+        } catch (error) {
+            alert("No se encontraron coincidencias.");
+        }
+    };
+};
+
+export const filterByGenre = (genres) => {
+    return {
+        type: "FILTER_BY_GENRE",
+        payload: genres
     };
 };
 
@@ -53,12 +66,24 @@ export const getGenres = () => {
     };
 };
 
-export const filterByGenre = (genres) => {
+export const filterByCreator = (creator) => {
     return {
-        type: "FILTER_BY_GENRE",
-        payload: genres
+        type: "FILTER_BY_CREATOR",
+        payload: creator
     };
 };
+
+export const getDetail = (id) => {
+    const API_URL = `/videogames/${id}`;
+    return async (dispatch) => {
+        const response = await axios.get(API_URL);
+        const vgById = response.data;
+        dispatch({
+                type: "GET_DETAIL",
+                payload: vgById
+            })
+    }
+}
 
 export const updateWithNewVg = (newVg) => {
     return {
@@ -67,15 +92,22 @@ export const updateWithNewVg = (newVg) => {
     }
 }
 
-export const filterByCreator = (creator) => {
-    return {
-        type: "FILTER_BY_CREATOR",
-        payload: creator
-    };
-};
-
 export const resetFilters = () => {
     return {
         type: "RESET_FILTERS",
+    };
+};
+
+export const sortByAlphabet = (order) => {
+    return {
+        type: "SORT_BY_ALPHABET",
+        payload: order
+    };
+};
+
+export const sortByRating = (order) => {
+    return {
+        type: "SORT_BY_RATING",
+        payload: order
     };
 };

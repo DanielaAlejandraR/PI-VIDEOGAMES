@@ -1,14 +1,10 @@
-// Importar todos los routers;
-const { Router } = require('express');
+const { Router } = require('express');//para crear rutas
 const routerVideoGames = require("./videogamesRoutes");
 const genresRouter = require("./genresRoutes");
 
+const router = Router(); //Configura rutas de la app
 
-const router = Router(); //Configuramos las rutas de la app
-
-
-router.use("/videogames", routerVideoGames);//Ante cualquier petición a URL /videogames que vaya a routerVideoGames
+router.use("/videogames", routerVideoGames);//todas las rutas definidas en routerVideoGames estan precedidas por \videogames en URL
 router.use("/genres", genresRouter);
-
 
 module.exports = router;

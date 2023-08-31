@@ -87,7 +87,7 @@ const Create = () => {
             ? [...newVg.genres, genreName] //agrego genreName a arreglo
             : [...newVg.genres.filter(genre => genre !== genreName)];//oldValue esta marcado se crea nuevo arreglo excluyendo genreName
 
-        setNewVg({...newVg, genres});//actualizo estado con actaulización de arreglo genres
+        setNewVg({...newVg, genres: genres});//actualizo estado con actaulización de arreglo genres
         const errorMessage = validateGenres(genres);
         setErrors({...errors, genres: errorMessage});
 

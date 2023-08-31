@@ -10,14 +10,14 @@ import styles from "./Home.module.css";
 const Home = () => {
     const dispatch = useDispatch();//para enviar action a mi store
 
-    const VideoGames = useSelector((state) =>state.VideoGames);//quiero que estes suscrito a cualquier cambio que ocurra en el estado, estado global 
+    //const VideoGames = useSelector((state) =>state.VideoGames);//quiero que estes suscrito a cualquier cambio que ocurra en el estado, estado global 
     const genres = useSelector((state) => state.genres);
     const currentVg = useSelector((state) => state.currentVg);
     
-useEffect(() => {//si queremos que nuestra action sea ejecutada en el momento del mount, en el momento que se carga por primera vez 
-    if (!VideoGames.length)dispatch(getVideoGames());
+    useEffect(() => {//si queremos que nuestra action sea ejecutada en el momento del mount, en el momento que se carga por primera vez 
+    dispatch(getVideoGames());
     if (!genres.length) dispatch(getGenres());
-},[dispatch, VideoGames,genres])
+},[dispatch, genres])
 
     const VG_PER_PAGE = 15;
     const currentVgLength = currentVg.length;

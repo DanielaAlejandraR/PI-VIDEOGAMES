@@ -1,6 +1,7 @@
 import Card from "../Card/card";
-import styles from "./Cards.module.css";
+import Loading from "../Loading/Loading.jsx";
 import { useSelector } from "react-redux";
+import styles from "./Cards.module.css";
 
 const Cards = (props) => {
     const { VG_PER_PAGE } = props;
@@ -16,57 +17,33 @@ const Cards = (props) => {
     );
   
     return (
+      typeof currentVg === "string" ? (
+        <h1 className={styles.notFoundText}>{currentVg}</h1>
+      ) : (
         <div>
-          {typeof currentVg === "string" ? (
-            <h1 className={styles.notFoundText}>{currentVg}</h1>
+          {!currentVg.length ? (
+            <div className={styles.loadingContainer}>
+              <Loading />
+            </div>
           ) : (
             <div className={styles.mainContainer}>
-              {currentVg.length > 0 &&
-                renderedVg.map((vgame, index) => (
+              {renderedVg.map((vg, index) => {
+                return (
                   <Card
                     key={index}
-                    id={vgame.id}
-                    name={vgame.name}
-                    image={vgame.image}
-                    genres={
-                      vgame.genres
-                        ? vgame.genres.map((x, index) =>
-                            index === vgame.genres.length - 1
-                              ? x.name
-                              : x.name + " / "
-                          )
-                        : "undefined"
-                    }
+                    id={vg.id}
+                    name={vg.name}
+                    background_image={vg.background_image}
+                    genres={vg.genres}
+                    rating={vg.rating}
                   />
-                ))}
+                );
+              })}
             </div>
           )}
         </div>
-      );
-    };
-    
-  export default Cards;
+      )
+    );
+  };
   
-
-// const Cards = ({VideoGames}) => {
-
-//     const VgList = VideoGames
-
-//     return(
-//         <div className={styles.cardlist}>
-//         {VgList?.map(vgame => (
-//             <Card 
-//             key={vgame.id} 
-//             id={vgame.id} 
-//             name={vgame.name}
-//             image={vgame.image}
-//             genres={vgame.genres ? vgame.genres.map((x, index) => (
-//                 index === vgame.genres.length - 1 ? x.name : x.name + " / "
-//             )) : "undefined"}              
-//             />
-//         ))}
-//         </div>
-//     );
-// }
-
-// export default Cards;
+  export default Cards;

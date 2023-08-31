@@ -6,10 +6,10 @@ const routerVideoGames = Router();
 
 routerVideoGames.get("/", getVideoGamesHandler); 
 
-routerVideoGames.get("/:id", getVideoGameByIdHandler);//:id param, la existencia de un param me determina una ruta nueva 
+routerVideoGames.get("/:id", getVideoGameByIdHandler);
 
 routerVideoGames.get("/name", getVideoGamesHandler);
 
-routerVideoGames.post ("/", postVideogameHandler);
+routerVideoGames.post("/", postVideogameHandler);//cuando se recibe una solicitud de tipo POST en esta ruta se ejecuta función postVideogameHandler
 
 module.exports = routerVideoGames;

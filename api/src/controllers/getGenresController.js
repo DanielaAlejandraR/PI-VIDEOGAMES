@@ -1,28 +1,32 @@
-const { Genre } = require("../db");// importo modelo 
-const { API_KEY } = process.env;// Extraigo variable de entorno utilizando destructuring
-const axios = require("axios");//Para hacer solicitudes HTTP
+const { Genre } = require("../db");
+const axios = require("axios");
+require('dotenv').config();
+const { API_KEY } = process.env;
 
-const getGenres = async () => {// defino funcion asincrona para obtener info sobre generos desde API
-    
-        let genreApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
-        genreApi = genreApi.data.results;//asigno el array de resultados de la API a la variable 
-        genreApi = genreApi?.map((genre) => {//Utilizo el operador opcional (?.) para verificar si genreApi existe antes de mapearlo. Con map transformo la información en un objeto que contiene solo el nombre del género.
-            return {
-                name: genre.name, 
-            }
-        });
-        for (const genre of genreApi) {
-            await Genre.findOrCreate({
-                where: {
-                    name: genre.name,
-                },
+let genresAreLoaded = false;// si generos ya fueron cargados a 
+
+const getGenres = async () => {
+    if (genresAreLoaded) {
+        const genresApi = await Genre.findAll();
+        const genresClean = genresApi.map(genre => genre.name);
+        return genresClean;
+    } else {
+        const API_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`;
+        const apiData = await axios.get(API_URL);
+        const genresApi = apiData.data.results;
+        const genresClean = genresApi.map((genre) => genre.name);
+        
+        const promises = genresClean.map((genre) => {
+            return Genre.findOrCreate({
+                where: {name: genre}
             });
-        }
-        const genres = await Genre.findAll({attributes: ['name']});//busco todos los generos en BD
-        
-        const genreNamesOnly = genres.map((genre) => genre.name);
-        
-        return genreNamesOnly;
-    }
+        });
+        await Promise.all(promises);
 
-module.exports = { getGenres};
+        genresAreLoaded = true; 
+        return genresClean;    
+    };
+
+};
+
+module.exports =  getGenres;

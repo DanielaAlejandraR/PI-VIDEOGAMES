@@ -1,39 +1,38 @@
-const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
-module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('videogame', {
+const { DataTypes } = require('sequelize');//importo clase DataTypes de libreria Sequelize
+
+module.exports = (sequelize) => {//Exporta función que define el modelo
+
+  sequelize.define('videogame', {//definicon modelo videogame
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUID,//universal unique identifier, automatico
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false, 
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false, //No se permite nulo
+      allowNull: false, 
     },
-    description:{
+    description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    platforms:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    platforms: {
+      type: DataTypes.ARRAY(DataTypes.STRING),//necesito el nombre de propiedad  ej: Xbox
       allowNull: false
     },
-    image:{
-      type: DataTypes.TEXT,
+    background_image: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     released: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATEONLY,// YYYY-MM-DD
       allowNull: false
     },
     rating:{
       type: DataTypes.FLOAT,
       allowNull: false
     }, 
-  },{ timestamps: false}// Para que no aparezca fecha y hora en que cree registros 
+  },{ timestamps: false}// NO fecha y hora en que cree registros 
   );
 };
