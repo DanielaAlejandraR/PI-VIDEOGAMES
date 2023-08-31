@@ -4,9 +4,6 @@
 
 .text {
     margin-top: 40px;
-    font-size: 25px;
-}
-
-.gif {
-    width: 30px;
+    font-size: 40px;
+    color: rgb(209, 152, 241);
 }

@@ -11,6 +11,7 @@ const Cards = (props) => {
     const firstVgRenderedIndex = (currentPageNumber - 1) * VG_PER_PAGE; 
     const lastVgRenderedIndex = firstVgRenderedIndex + VG_PER_PAGE - 1; 
 
+    //creo nuevo array con VG a mostar en pg actual
     const renderedVg = currentVg.slice(
       firstVgRenderedIndex,
       lastVgRenderedIndex + 1
@@ -21,11 +22,11 @@ const Cards = (props) => {
         <h1 className={styles.notFoundText}>{currentVg}</h1>
       ) : (
         <div>
-          {!currentVg.length ? (
+          {!currentVg.length ? ( // Si currentVg está vacío
             <div className={styles.loadingContainer}>
               <Loading />
             </div>
-          ) : (
+          ) : ( // Si currentVg no está vacío
             <div className={styles.mainContainer}>
               {renderedVg.map((vg, index) => {
                 return (

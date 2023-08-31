@@ -19,12 +19,13 @@ const getVideoGameById = async (id)=>{
 
     if (!videogameDB) throw Error(`Request failed with status code 404. There is no videogame with the id ${id}`);
 
-        const { name, background_image, platforms, released, rating, Genres, description } = videogameDB;
+        const { name, background_image, platforms, released, rating, Genres, description } = videogameDB.dataValues;
+        let platformArray = platforms.filter((x) => x !== '');
         const vgByIdClean = {
             id, 
             name, 
             background_image, 
-            platforms : platforms.substring(2, platforms.length - 2).split("\",\""),
+            platforms : platformArray,
             released, 
             rating,
             genres: Genres.map(genre => genre.name),

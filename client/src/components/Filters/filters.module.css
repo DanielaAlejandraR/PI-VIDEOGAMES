@@ -4,7 +4,7 @@
     align-items: center;
     width: 100%;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
   }
   
   .searchbarContainer {
@@ -15,17 +15,17 @@
     width: 350px;
     height: 30px;
     border-radius: 5px;
-    background-color: black;
+    background-color: rgba(242, 32, 204, 0.455);
     border: 1px solid var(--mygrey4);
     color: white;
   }
   
   .searchInput {
-    width: 310px;
+    width: 320px;
     border-radius: 5px;
     background-color: transparent;
     border: transparent;
-    color: white;
+    color: rgb(233, 242, 243);
     font-size: 18px;
   }
   
@@ -41,14 +41,13 @@
     box-shadow: 0 0 5px var(--mylightblue2);
   }
   
-  .searchSubmitButton {
-    font-size: 15px;
-    height: 25px;
-    width: 25px;
-    background-color: var(--mygrey3opaque);
+  .searSubmitButton{
+    font-size: 17px;
+    height: 32px;
+    width: 75px;
+    background-color:rgb(242, 235, 18);
     border: none;
     border-radius: 5px;
-    margin-right: 5px;
     cursor: pointer;
   }
   
@@ -62,7 +61,7 @@
     flex-direction: row;
     height: 30px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 15px;
     align-items: center;
     justify-content: center;
   }
@@ -72,11 +71,11 @@
   .sortSelect,
   .resetButton {
     width: 150px;
-    background-color: rgb(51, 2, 52);
+    background-color:  rgb(111, 64, 190);
     border: 1px solid var(--mygrey4);
     color:aliceblue;
     height: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 5px;
     font-size: 18px;
   }

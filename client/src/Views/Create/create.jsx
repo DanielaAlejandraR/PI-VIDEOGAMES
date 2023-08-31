@@ -1,30 +1,31 @@
-import styles from "./Create.module.css";
-import axios from "axios";
-
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres } from "../../redux/actions";
 import { updateWithNewVg } from "../../redux/actions";
 import validationFunctions, { validateGenres, validatePlatforms, validateSubmit } from "./validateFunction";
+import axios from "axios";
+
+import styles from "./Create.module.css";
+
 
 const Create = () => {
-    // *** ALL GENRES -> useSelector and useEffect (dispatch(getGenres()) ***
-    const allGenres = useSelector(state => state.genres);       // before dispatch(getGenres()) -> []; after dispatch -> ['Indie', "Strategy'...]
-    // console.log('allGenres: ', allGenres);
+   
+    const allGenres = useSelector(state => state.genres); // obtener el estado de los géneros del store de Redux.     
+
     const dispatch = useDispatch();
     useEffect(() => {
-        if (!allGenres.length) {
-            dispatch(getGenres());
+        if (!allGenres.length) {//verifico longitud del array si es cero
+            dispatch(getGenres());//obtengo generos 
         } 
     }, [dispatch, allGenres]);
 
-    // *** LOCAL STATE ***
     const emptyVg = {name: '', image: '', description: '', released: '', rating: '', platforms: [''], genres: []};
     const emptyErrors = {name: '', image: '', description: '', released: '', rating: '', platforms: '', genres: ''};
     const emptyArray = [];
-    const [ newVg, setNewVg ] = useState(emptyVg);
-    const [ errors, setErrors ] = useState(emptyErrors);
-    const [ genresBoxes, setGenresBoxes ] = useState(emptyArray);   // before useEffect(setGenresBoxes(emptyGenresBoxes)) with arrDependencies[allGenres] -> []; after useEffect -> [false, false...]
+
+    const [ newVg, setNewVg ] = useState(emptyVg);//Almacenar la información del videojuego que se está creando 
+    const [ errors, setErrors ] = useState(emptyErrors);//almacenar msj de error 
+    const [ genresBoxes, setGenresBoxes ] = useState(emptyArray);
 
     useEffect(() => {
         if (allGenres.length) {
@@ -33,18 +34,14 @@ const Create = () => {
         }
     }, [allGenres]);
 
-
-    // *** HANDLECHANGE ***
-    const handleChange = (event) => {
+    const handleChange = (event) => {// se llama cada vez que hay un cambio en cualquier campo del formulario.
         const { value } = event.target; 
         const property = event.target.name;
         setNewVg({...newVg, [property]: value}); 
-        const errorMessage = validationFunctions[property](value);
+        const errorMessage = validationFunctions[property](value);//property nombre del campo
         setErrors({...errors, [property]: errorMessage});
     };
 
-
-    // *** PLATFORMS ***
     const handlePlatformsChange = (event) => {
         const { value } = event.target;
         const index = Number(event.target.id);
@@ -74,7 +71,7 @@ const Create = () => {
         const index = event.target.id; 
         const genreName = event.target.name;
         const oldValue = genresBoxes[index];
-        const genres = !oldValue        /* oldValue is undefined at the beggining. Then it is true or false */        
+        const genres = !oldValue             
             ? [...newVg.genres, genreName] 
             : [...newVg.genres.filter(genre => genre !== genreName)];
 
@@ -95,9 +92,9 @@ const Create = () => {
         if (errorMessage) {
             window.alert(errorMessage);  
         } else {
-            /* NIY: replace for action */
+            
             const newVgToSubmit = {...newVg, background_image: newVg.image}; 
-            /* const API_URL = "http://localhost:3001/videogames"; */ /* old */
+            
             const API_URL = "/videogames"; /* new */
             axios
                 .post(API_URL, newVgToSubmit)
@@ -153,7 +150,7 @@ const Create = () => {
                         RELEASED *{' '} 
                         <input 
                             className={`${styles.input} ${styles.dateInput}`}
-                            type="date"  /* date format depends on OS settings */
+                            type="date"  
                             name="released"
                             value={newVg.released}
                             onChange={handleChange}
@@ -214,7 +211,7 @@ const Create = () => {
                         return (
                             <div className={styles.platformsSubContainer} key={index}>
                                 <input 
-                                    /* className={styles.platformInput} */
+                                    
                                     className={`${styles.input} ${styles.platformInput}`}
                                     id={index}
                                     type="text"

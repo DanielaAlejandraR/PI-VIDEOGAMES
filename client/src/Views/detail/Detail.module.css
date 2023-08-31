@@ -15,10 +15,7 @@
   
   .name {
     font-size: 35px;
-  }
-  
-  .line {
-    width: 80%;
+    color: aliceblue;
   }
   
   /* DESCRIPTION */
@@ -26,12 +23,14 @@
     width: 80%;
     text-align: justify;
     font-size: 18px;
+    color: aliceblue;
   }
   
   .description li {
     font-size: 15px;
     list-style-type: circle;
     list-style-position: inside;
+  
   }
   
   /* IMAGE AND DATA CONTAINER */
@@ -65,7 +64,7 @@
   
   .data {
     font-size: 18px;
-    color: rgb(13, 1, 1);
+    color: rgb(255, 252, 252);
   }
   
   /* MEDIA QUERIES */

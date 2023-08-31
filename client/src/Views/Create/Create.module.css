@@ -3,20 +3,20 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
-    flex: 1;
-    background-color: rgba(244, 143, 221, 0.526);
-
+    width: 60%;
+    background-color: rgba(176, 142, 234, 0.739);
+    margin-top: 50px;
+    margin-left: 250px;
   }
   
   /* FORM */
   .formContainer {
-    background-color: var(--mygreyopaque);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    
+    width: 90%;
+    margin-top: 20px;
+    color:  rgb(8, 8, 8);
   }
   
   .nameAndReleasedAndRatingContainer {
@@ -24,6 +24,7 @@
     flex-direction: row;
     justify-content: center;
     width: 80%;
+    color:  rgb(8, 8, 8);
     
   }
   
@@ -34,7 +35,7 @@
     padding: 1px;
     justify-content: center;
     align-items: center;
-    color: rgb(6, 1, 1);
+    color: rgb(8, 8, 8);
     font-size: 18px;
   }
   
@@ -45,13 +46,14 @@
     margin: 5px;
     border-radius:10px;
     border: solid rgb(20, 1, 1) 1px;
-    background-color: var(--mygrey3opaque);
-    color:black;
+    background-color:aliceblue;
+    color: rgb(8, 8, 8);
   }
   
   .nameInput {
     width: 80%;
-    color:black
+    color: rgb(8, 8, 8);
+
   }
   
   .dateInput {
@@ -119,7 +121,7 @@
   /* SUBMIT */
   .submitButton {
     background-color: var(--mylightblue2);
-    color: rgb(15, 6, 6);
+    color: rgb(230, 230, 25);
     font-weight: bold;
     height: 50px;
     width: 50px;
@@ -131,7 +133,7 @@
   
   .submitButton:hover {
     background-color: var(--mylightblue);
-    color: rgb(43, 23, 23);
+    color:aliceblue;;
     font-size: 35px;
     height: 60px;
     width: 60px;

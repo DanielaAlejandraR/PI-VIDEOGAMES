@@ -1,4 +1,4 @@
-import { filterByCreator, filterByGenre, searchByName, sortByAlphabet, sortByRating, resetFilters } from "../../redux/actions";
+import {  searchByName, filterByGenre, filterByCreator,  sortByAlphabet, sortByRating, resetFilters } from "../../redux/actions";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageNumber} from "../../redux/actions";
@@ -7,27 +7,28 @@ import styles from "./filters.module.css";
 
 const Filters = () =>{
 
-//Declaro estados locales usando el hook useState
+//Estados locales para almacenar los valores de los campos
     const [vgName, setVgName] = useState("");//setVgName fn para actualizar estado
     const [genre, setGenre] = useState("");
     const [creator, setCreator] = useState("");
     const [order, setOrder] = useState("");
 
-    
-    const dispatch = useDispatch();//Enviar acciones 
+    const dispatch = useDispatch(); 
     
     const genres = useSelector((state) => state.genres);
 
-    const handleSearchInput = (event) => {//maneja los cambios en el campo de busqueda 
-        const inputValue = event.target.value;//// Obtiene el valor actual del campo de búsqueda.
-        setVgName(inputValue);// Actualiza el estado 'vgName' con el valor del campo de búsqueda.
+    // Función que maneja los cambios en el campo de búsqueda
+    const handleSearchInput = (event) => {
+        const inputValue = event.target.value;// Obtiene el valor actual del campo de búsqueda.
+        setVgName(inputValue);// Actualiza el estado con el valor del campo de búsqueda.
         dispatch(updatePageNumber(1));
     };
     
-    const handleSearchSubmit = (event) =>{//Se llama cuando se envia formulario
-        event.preventDefault();//previene recargar pag
-        dispatch(searchByName(vgName));//Envia accion de busqueda a store de Redux utilizando metodo searchByName, vgName almacena nombrenombre de Vg a buscar
-        setVgName("");//restablecer campo de entrada despues de la busqueda
+    // Función llamada al enviar el formulario de búsqueda
+    const handleSearchSubmit = (event) =>{
+        event.preventDefault();
+        dispatch(searchByName(vgName));//Envía acción de búsqueda con el nombre del VG
+        setVgName("");//restablecer campo de busqueda 
         setGenre("");
         setCreator("");
         setOrder("");
@@ -35,7 +36,7 @@ const Filters = () =>{
     };
 
     const handleFilterByGenre = (event) => {
-        const genre = event.target.value;
+        const genre = event.target.value;//Obtiene el valor seleccionado del campo de género
         setGenre(genre);
         dispatch(filterByGenre(genre));
         setVgName("");
@@ -44,25 +45,25 @@ const Filters = () =>{
 
     const handleFilterByCreator = (event) => {
         const creator = event.target.value;
-        setCreator(creator);
-        dispatch(filterByCreator(creator));
+        setCreator(creator);//Actualiza el estado 'creator' con el valor seleccionado
+        dispatch(filterByCreator(creator));//Envia acción 
         setVgName("");
         setOrder("");
         dispatch(updatePageNumber(1));
     }
 
-  const handleSort = (event) => {
-    const order = event.target.value;
-    setOrder(order);
-    if (order === "a_z" || order === "z_a") {
+    const handleSort = (event) => {
+        const order = event.target.value;
+        setOrder(order);
+        if (order === "a_z" || order === "z_a") {
       dispatch(sortByAlphabet(order));
-    } else if (order === "ratingAsc" || order === "ratingDesc") {
+        } else if (order === "ratingAsc" || order === "ratingDesc") {
       dispatch(sortByRating(order));
     }
-    dispatch(updatePageNumber(1));
+      dispatch (updatePageNumber(1));
   };
 
-  /* HANDLE RESET */
+
   const handleResetFilters = (event) => {
     event.preventDefault();
     dispatch(resetFilters());
@@ -89,6 +90,7 @@ const Filters = () =>{
                 type="submit"> Search</button>
             </form>
 
+
         <div className={styles.filtersAndSortsContainer}>
         {/* GENRE */}
         <select className={styles.genreSelect}
@@ -106,8 +108,7 @@ const Filters = () =>{
         </select>
 
         {/* CREATOR */}
-        <select
-            className={styles.creatorSelect}
+        <select className={styles.creatorSelect}
             name="filterByCreator"
             value={creator}
             onChange={handleFilterByCreator}
@@ -119,15 +120,12 @@ const Filters = () =>{
         </select>
 
        {/* SORT */}
-      <select
-          className={styles.sortSelect}
+      <select className={styles.sortSelect}
           name="Sort"
           value={order}
           onChange={handleSort}
         >
-          <option disabled value="">
-            Sort
-          </option>
+          <option disabled value="">Sort</option>
           <option value="a_z">A-Z</option>
           <option value="z_a">Z-A</option>
           <option value="ratingAsc">Rating ↑</option>
@@ -136,8 +134,7 @@ const Filters = () =>{
 
         {/* RESET */}
         <button className={styles.resetButton} onClick={handleResetFilters}>
-          Reset
-        </button>
+          Reset</button>
       </div>
     </div>
     );

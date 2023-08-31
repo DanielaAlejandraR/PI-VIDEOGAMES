@@ -1,5 +1,6 @@
 import { GET_VIDEOGAMES, SEARCH_BY_NAME, RESET_FILTERS, FILTER_BY_CREATOR, FILTER_BY_GENRE, SORT_BY_ALPHABET, SORT_BY_RATING, UPDATE_PAGE_NUMBER, GET_GENRES, UPDATE_VG} from "./actions"; 
 
+//Estructura inicial del estado global
 const initialState = {
     allVg: [],
     currentVg: [],
@@ -15,7 +16,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_VIDEOGAMES: {//Se ejecuta en caso de que llegue una acción con este tipo
             const allVg = action.payload;
             return {
-                ...state,//copio todo el estado actual 
+                ...state,//copio estado actual 
                 allVg: [...allVg],
                 filteredByCreator: [...allVg],
                 filteredByGenre: [...allVg],
@@ -34,8 +35,8 @@ const rootReducer = (state = initialState, action) => {
         case SEARCH_BY_NAME: {
             const filteredByName = action.payload;
             return {
-                ...state,//copia estado actual 
-                currentVg: filteredByName //Luego, se actualiza la propiedad currentVg del estado con el valor de filteredByName. Esto significa que en el estado global, la propiedad currentVg ahora contiene los datos del videojuego filtrado por nombre.
+                ...state,
+                currentVg: filteredByName //Se actualiza la propiedad currentVg del estado con el valor de filteredByName. Esto significa que en el estado global, la propiedad currentVg ahora contiene los datos del videojuego filtrado por nombre.
             };
         };
 
@@ -56,11 +57,11 @@ const rootReducer = (state = initialState, action) => {
                 filteredByCreator = [...state.allVg];
             } else if (creator === 'db') {
                 filteredByCreator = [...state.allVg].filter(vg => {
-                    return !isNaN(vg.id)
+                    return isNaN(vg.id)
                 })
             } else if (creator === 'api') {
                 filteredByCreator = [...state.allVg].filter(vg => {
-                    return isNaN(vg.id)
+                    return !isNaN(vg.id)
                 })
             };
 
@@ -75,10 +76,9 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredByCreator: filteredByCreator,
-                currentVg: currentVg        
+                currentVg: currentVg       
             };
         };
-
 
         case FILTER_BY_GENRE: {
             const genre = action.payload;
@@ -108,10 +108,8 @@ const rootReducer = (state = initialState, action) => {
             };
         }
 
-
-
         case SORT_BY_ALPHABET: {
-            const order = action.payload;       // 'a_z' or 'z_a'
+            const order = action.payload;      
             const compareFunction = ((a, b) => {
                 const nameA = a.name.toUpperCase();
                 const nameB = b.name.toUpperCase();
@@ -120,7 +118,6 @@ const rootReducer = (state = initialState, action) => {
                 return 0;
             });
 
-            // sort changes the array in place. Then we make a copy of state.currentVg
             const sortedAz = [...state.currentVg].sort(compareFunction);
             const sortedVg = order === 'a_z' ? sortedAz : [...sortedAz].reverse();
 
@@ -146,9 +143,6 @@ const rootReducer = (state = initialState, action) => {
             };
         };
 
-
-
-
         case GET_GENRES: {
             const genres = action.payload;
             return {
@@ -156,7 +150,6 @@ const rootReducer = (state = initialState, action) => {
                 genres
             };
         };
-
 
         case UPDATE_VG: {
             const newVg = action.payload;
@@ -172,7 +165,7 @@ const rootReducer = (state = initialState, action) => {
         };
 
 
-        default: 
+        default: //Retorna el estado sin cambios si no se reconoce la acción
             return {
                 ...state
             };
