@@ -1,14 +1,29 @@
-.mainContainer{
-    width: 85vw;/* mi contenedor ocupe el 85% del viewport*/
-    margin: 0 auto;/*No me agregue espacio extra hacia ningun lado */
-    display: grid;/* divide contenedor en pequeños contenedores */
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /*4 columnas del mismo tamaño*/
-    grid-gap: 15px;/*Espacio entre cada tarjeta de 20*/
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  font-size: 55px;
+}
+
+.mainContainer {
+display: grid;
+grid-template-columns: repeat(5, 300px);
+margin: 0 auto;
+width: fit-content;
 }
 
 .notFoundText {
-  color: var(--myred2);
-  margin-top: 100px;
-  margin-bottom: 400px;
+color: var(--myred2);
+margin-top: 100px;
+margin-bottom: 400px;
 }
 
+@media screen and (max-width: 1280px) {
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+}

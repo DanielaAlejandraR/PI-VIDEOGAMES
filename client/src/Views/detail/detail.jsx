@@ -105,8 +105,8 @@ const Detail = () => {
                                 }
                             </p>
     
-                            {/* PLATFORMS */}
-                            {/* <p className={styles.data}> Platforms:{" "}
+                          {/* PLATFORMS */}
+                            <p className={styles.data}>Platforms:{" "}
                                 {!platforms?.length
                                     ? <span>No platforms provided</span>
                                     : platforms.map((plaftorm, index) => {
@@ -116,27 +116,8 @@ const Detail = () => {
                                                 : <span key={index}>{`${plaftorm} | `}</span>
                                         ) 
                                     })
-                        </p> */}
-
-                        <p className={styles.data}>
-                            Platforms:{" "}
-                            {!platforms
-                                ? <span>No platforms provided</span>
-                                : Array.isArray(platforms)
-                                ? platforms.map((platform, index) => (
-                                    <span key={index}>
-                                        {index === 0 ? "" : " | "} {platform}
-                                    </span>
-                                ))
-                                : typeof platforms === "object"
-                                ? Object.values(platforms).map((platform, index) => (
-                                    <span key={index}>
-                                        {index === 0 ? "" : " | "} {platform}
-                                    </span>
-                                ))
-                                : platforms.replace("{", "").replace("}", "").split(",").map(platform => platform.trim()).join(" | ")
-                            }
-                        </p>
+                                }
+                            </p>
                         </div>
                     </div>
     

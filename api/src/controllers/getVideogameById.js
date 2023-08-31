@@ -24,7 +24,7 @@ const getVideoGameById = async (id)=>{
             id, 
             name, 
             background_image, 
-            platforms,
+            platforms : platforms.substring(2, platforms.length - 2).split("\",\""),
             released, 
             rating,
             genres: Genres.map(genre => genre.name),

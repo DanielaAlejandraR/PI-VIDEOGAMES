@@ -2,35 +2,44 @@
     text-decoration: none;
 }
 .cardcontainer{
-    display: flex; /* contenedores se muevan libre en area*/
-    flex-direction: column; /* Separe y ponga en linea*/
-    background-color: rgba(236, 148, 239, 0.642);
-    border: 5px solid rgb(121, 22, 203);
-    border-radius: 10px;
-    padding: 15px;/* Espacio interior margen interno*/
+    background-color: rgba(236, 161, 239, 0.492);
+    border: 2px solid rgb(114, 15, 195);
+    margin: 10px;
+    width: 250px;
+    height: 280px;
+    border-radius: 5%;
+    color:rgb(1, 11, 20);
     cursor: pointer;
-}
-.card-container:hover{
-    transform: scale(1.05);/* Cuando se pase cursor que se agrande */
 }
 
 .image{
-    width: 170px;
-    height: 160px;
+    width: 100%;
+    height: 150px;
     border-radius: 8px 8px 0px 0px;
 }
 
 .title {
-    /* height: 35px; */
-    margin: 10px; 
-    font-size: 16px;
+    margin: 15px; 
+    font-size: 20px;
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis; 
+    text-align: center;
+    font-family: 'Open Sans'
+}
+
+.rating {
+    font-size: 15px;
+    margin: 4px;
+    text-align: center;
+    font-family: 'Open Sans';
+    background-color: antiquewhite;
+    color: rgb(1, 11, 20);
 }
 
 .genres {
+    margin: 5px 5px 0px 5px;
+    font-size: 18px;
     text-align: center;
-    font-family: 'Rubik', sans-serif;
-    color: #000000;
+    font-family: 'Open Sans'
 }

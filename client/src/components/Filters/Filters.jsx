@@ -7,7 +7,8 @@ import styles from "./filters.module.css";
 
 const Filters = () =>{
 
-    const [vgName, setVgName] = useState("");//declaro estado local usando el hook useState
+//Declaro estados locales usando el hook useState
+    const [vgName, setVgName] = useState("");//setVgName fn para actualizar estado
     const [genre, setGenre] = useState("");
     const [creator, setCreator] = useState("");
     const [order, setOrder] = useState("");
@@ -18,8 +19,8 @@ const Filters = () =>{
     const genres = useSelector((state) => state.genres);
 
     const handleSearchInput = (event) => {//maneja los cambios en el campo de busqueda 
-        const inputValue = event.target.value;
-        setVgName(inputValue);
+        const inputValue = event.target.value;//// Obtiene el valor actual del campo de búsqueda.
+        setVgName(inputValue);// Actualiza el estado 'vgName' con el valor del campo de búsqueda.
         dispatch(updatePageNumber(1));
     };
     
@@ -30,7 +31,7 @@ const Filters = () =>{
         setGenre("");
         setCreator("");
         setOrder("");
-        dispatch(updatePageNumber(1));//envia acción para
+        dispatch(updatePageNumber(1));
     };
 
     const handleFilterByGenre = (event) => {
@@ -50,7 +51,6 @@ const Filters = () =>{
         dispatch(updatePageNumber(1));
     }
 
-    /* HANDLE SORT */
   const handleSort = (event) => {
     const order = event.target.value;
     setOrder(order);
@@ -75,6 +75,9 @@ const Filters = () =>{
 
     return(
         <div className={styles.mainContainer}>
+
+          {/* SEARCH */}
+
             <form className={styles.searchbarContainer} onSubmit={handleSearchSubmit}>
             <input className={styles.searchInput}
                 type="text"
@@ -82,13 +85,11 @@ const Filters = () =>{
                 value={vgName}
                 onChange={handleSearchInput}
             />
-            
             <button className={styles.searSubmitButton}
                 type="submit"> Search</button>
             </form>
 
         <div className={styles.filtersAndSortsContainer}>
-
         {/* GENRE */}
         <select className={styles.genreSelect}
             name="filterByGenre"
@@ -118,7 +119,7 @@ const Filters = () =>{
         </select>
 
        {/* SORT */}
-       <select
+      <select
           className={styles.sortSelect}
           name="Sort"
           value={order}

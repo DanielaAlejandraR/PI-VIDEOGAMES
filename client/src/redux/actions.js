@@ -7,25 +7,26 @@ export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const GET_GENRES = "GET_GENRES";
 export const GET_DETAIL  = "GET_DETAIL";
 export const UPDATE_VG  = "UPDATE_VG ";
-export const FILTER_BY_CREATOR  = "FILTER_BY_CREATOR ";
+export const FILTER_BY_CREATOR  = "FILTER_BY_CREATOR";
 export const RESET_FILTERS  = "RESET_FILTERS";
 export const SORT_BY_ALPHABET  = "SORT_BY_ALPHABET";
 export const SORT_BY_RATING  = "SORT_BY_RATING";
 
-export const getVideoGames = () => {
+export const getVideoGames = () => {//SE ENCARGA DE OBTENER LA LISTA COMPLETA DE VIDEOJUEGOS DE API
     const API_URL = '/videogames'; 
     return async (dispatch) => {
         const response = await axios.get(API_URL);
-        const VideoGames = response.data;
-    dispatch({//Para enviar acción a REDUX
-    type:"GET_VIDEOGAMES",
+        const VideoGames = response.data;//los datos de los videojuegos obtenidos se extraen de response.data
+    dispatch({//Envio nueva accion al store
+    type:"GET_VIDEOGAMES",//acción de tipo
     payload: VideoGames// VG obtenidos de la API
 })
 }}//el estado de Redux se actualiZA con la lista de videojuegos obtenida de la API.
 
+
 export const updatePageNumber = (page) => {
     return {
-        type: "UPDATE_PAGE_NUMBER",
+        type: UPDATE_PAGE_NUMBER,
         payload: page
     };
 };
@@ -38,7 +39,7 @@ export const searchByName = (vgName) => {//Defino acción
             const response = await axios.get(API_URL);
             const vgByName = response.data;
             dispatch({//función asincrona para enviar acciones al store y actualizar estado
-                type: "SEARCH_BY_NAME",
+                type: SEARCH_BY_NAME,
                 payload: vgByName//contiene datos de videojuego
             });
         } catch (error) {
@@ -60,7 +61,7 @@ export const getGenres = () => {
         const response = await axios.get(API_URL);
         const genres = response.data;
         dispatch({
-            type: "GET_GENRES",
+            type: GET_GENRES,
             payload: genres
         });
     };
@@ -68,7 +69,7 @@ export const getGenres = () => {
 
 export const filterByCreator = (creator) => {
     return {
-        type: "FILTER_BY_CREATOR",
+        type: FILTER_BY_CREATOR,
         payload: creator
     };
 };
@@ -79,7 +80,7 @@ export const getDetail = (id) => {
         const response = await axios.get(API_URL);
         const vgById = response.data;
         dispatch({
-                type: "GET_DETAIL",
+                type: GET_DETAIL,
                 payload: vgById
             })
     }
@@ -87,27 +88,27 @@ export const getDetail = (id) => {
 
 export const updateWithNewVg = (newVg) => {
     return {
-        type: "UPDATE_VG",
+        type: UPDATE_VG,
         payload: newVg
     }
 }
 
 export const resetFilters = () => {
     return {
-        type: "RESET_FILTERS",
+        type: RESET_FILTERS,
     };
 };
 
 export const sortByAlphabet = (order) => {
     return {
-        type: "SORT_BY_ALPHABET",
+        type: SORT_BY_ALPHABET,
         payload: order
     };
 };
 
 export const sortByRating = (order) => {
     return {
-        type: "SORT_BY_RATING",
+        type: SORT_BY_RATING,
         payload: order
     };
 };

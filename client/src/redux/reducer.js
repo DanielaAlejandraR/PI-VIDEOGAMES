@@ -2,20 +2,20 @@ import { GET_VIDEOGAMES, SEARCH_BY_NAME, RESET_FILTERS, FILTER_BY_CREATOR, FILTE
 
 const initialState = {
     allVg: [],
-    filteredByCreator: [],
-    filteredByGenre: [],
     currentVg: [],
     currentPageNumber: 1,
+    filteredByCreator: [],
+    filteredByGenre: [],
     genres: []
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case GET_VIDEOGAMES: {
+        case GET_VIDEOGAMES: {//Se ejecuta en caso de que llegue una acción con este tipo
             const allVg = action.payload;
             return {
-                ...state, 
+                ...state,//copio todo el estado actual 
                 allVg: [...allVg],
                 filteredByCreator: [...allVg],
                 filteredByGenre: [...allVg],
@@ -23,12 +23,19 @@ const rootReducer = (state = initialState, action) => {
             };
         };
 
-        case SEARCH_BY_NAME: {
-            const filteredByName = action.payload;
-
+        case UPDATE_PAGE_NUMBER: {
+            const currentPageNumber = action.payload;
             return {
                 ...state,
-                currentVg: filteredByName
+                currentPageNumber
+            };
+        };
+        
+        case SEARCH_BY_NAME: {
+            const filteredByName = action.payload;
+            return {
+                ...state,//copia estado actual 
+                currentVg: filteredByName //Luego, se actualiza la propiedad currentVg del estado con el valor de filteredByName. Esto significa que en el estado global, la propiedad currentVg ahora contiene los datos del videojuego filtrado por nombre.
             };
         };
 
@@ -49,11 +56,11 @@ const rootReducer = (state = initialState, action) => {
                 filteredByCreator = [...state.allVg];
             } else if (creator === 'db') {
                 filteredByCreator = [...state.allVg].filter(vg => {
-                    return isNaN(vg.id)
+                    return !isNaN(vg.id)
                 })
             } else if (creator === 'api') {
                 filteredByCreator = [...state.allVg].filter(vg => {
-                    return !isNaN(vg.id)
+                    return isNaN(vg.id)
                 })
             };
 
@@ -140,13 +147,6 @@ const rootReducer = (state = initialState, action) => {
         };
 
 
-        case UPDATE_PAGE_NUMBER: {
-            const currentPageNumber = action.payload;
-            return {
-                ...state,
-                currentPageNumber
-            };
-        };
 
 
         case GET_GENRES: {

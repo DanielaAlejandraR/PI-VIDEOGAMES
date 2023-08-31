@@ -17,13 +17,6 @@ const Nav = ({handleClick}) =>{
         className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
         > CREATE VIDEOGAME
         </NavLink>
-
-        <NavLink
-        onClick={handleClick} 
-        to="/about"
-        className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
-      > ABOUT
-      </NavLink>
     </div>
     </div> 
     )

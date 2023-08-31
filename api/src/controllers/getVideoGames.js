@@ -31,7 +31,7 @@ const getVideoGames = async ()=>{
     const BASE_API_URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
     const numberOfResultsPerPage = 15;            
-    const numberOfResultsExpected = 150;           
+    const numberOfResultsExpected = 100;           
     const numberOfRequestsRequired = Math.ceil(numberOfResultsExpected/numberOfResultsPerPage);        // Math.ceil(150/15) 10
 
     
