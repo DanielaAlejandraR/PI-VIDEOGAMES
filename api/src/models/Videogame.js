@@ -1,8 +1,8 @@
-const { DataTypes } = require('sequelize');//importo clase DataTypes de libreria Sequelize
+const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => {//Exporta función que define el modelo
+module.exports = (sequelize) => {
 
-  sequelize.define('videogame', {//definicon modelo videogame
+  sequelize.define('videogame', {
     id: {
       type: DataTypes.UUID,//universal unique identifier, automatico
       defaultValue: DataTypes.UUIDV4,
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {//Exporta función que define el modelo
     rating:{
       type: DataTypes.FLOAT,
       allowNull: false
-    }, 
-  },{ timestamps: false}// NO fecha y hora en que cree registros 
+    }
+  },{ timestamps: false}
   );
 };

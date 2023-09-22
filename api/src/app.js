@@ -2,7 +2,6 @@
 //Este modulo tiene la responsabilidad de crear el servidor 
 
 const express = require('express'); //Crear servidor
-// Middleware
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -27,10 +26,10 @@ server.use((req, res, next) => {
 });
 
 //middleware principal para las rutas
-server.use('/', routes); // configuramos router principal, continua camino a enrutador 
+server.use('/', routes); 
 
 // Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+server.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);

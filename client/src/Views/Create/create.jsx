@@ -9,7 +9,6 @@ import styles from "./Create.module.css";
 
 
 const Create = () => {
-   
     const allGenres = useSelector(state => state.genres); // obtener el estado de los géneros del store de Redux.     
 
     const dispatch = useDispatch();

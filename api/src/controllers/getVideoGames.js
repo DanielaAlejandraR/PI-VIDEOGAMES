@@ -5,8 +5,7 @@ const { API_KEY } = process.env;
 
 
 const getVideoGames = async ()=>{
-    
-    const  dbData = await Videogame.findAll({
+    const dbData = await Videogame.findAll({//Obtener vg de base de datos
         include:[{
             model: Genre, 
             attributes: ["name"], 
@@ -15,18 +14,15 @@ const getVideoGames = async ()=>{
     });
 
     const dbVideoGames =  dbData.map((vg) =>{
-        const { id, name, background_image, platforms, released, rating, Genres } = vg;
+        const { id, name, background_image, rating, Genres } = vg;
         return {
             id, 
             name, 
             background_image, 
-            /* platforms, */
-            /* released, */ 
             rating,
             genres: Genres.map(genre => genre.name)
         }
     });
-
 
     const BASE_API_URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
@@ -34,31 +30,29 @@ const getVideoGames = async ()=>{
     const numberOfResultsExpected = 100;           
     const numberOfRequestsRequired = Math.ceil(numberOfResultsExpected/numberOfResultsPerPage);        // Math.ceil(150/15) 10
 
-    
+//Solicitud de datos API externa
     const apiPromises = [];
     for (let page = 1; page <= numberOfRequestsRequired; page++) {
         apiPromises.push(axios.get(`${BASE_API_URL}&page_size=${numberOfResultsPerPage}&page=${page}`)); 
     };
     
-    const promisesResults = await Promise.all(apiPromises);        
-    const apiVgUnflattened = promisesResults.map(apiResponse => apiResponse.data.results);   
-    const apiVgRaw = apiVgUnflattened.flat(1); //aplana a 1 nivel
+    const promisesResults = await Promise.all(apiPromises);
 
-    let apiVideogamesClean = apiVgRaw.map((vg) => {
-        const { id, name, background_image, /* platforms,  */released, rating, genres } = vg;
+    const apiVgUnflattened = promisesResults.map(apiResponse => apiResponse.data.results);//Obtener resultados individuales de cada pagina en un nuevo array    
+    const apiVgApi = apiVgUnflattened.flat(1); //aplana array a 1 nivel
+
+    let apiVideogamesClean = apiVgApi.map((vg) => {
+        const { id, name, background_image, rating, genres } = vg;
         return {
             id, 
             name, 
             background_image, 
-            /* platforms: parent_platforms.map(parent_platform => parent_platform.platform.name), */
-            /* released, */ 
             rating,
             genres: genres.map(genre => genre.name),
         };
     });
 
-    apiVideogamesClean = apiVideogamesClean.slice(0, numberOfResultsExpected);
-
+    apiVideogamesClean = apiVideogamesClean.slice(0, numberOfResultsExpected);//limito cantidad de resultados obtenidos de la API, seleccionamos elementos desde el primer elemento del array, indice 0 
     const allVideoGames = [...dbVideoGames, ...apiVideogamesClean];
     
     return allVideoGames;

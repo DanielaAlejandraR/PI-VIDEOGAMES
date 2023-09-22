@@ -31,6 +31,8 @@ const getVideoGameByName = async (name) => {
       }
    }); 
 
+   //Data de API
+
    const API_URL = `https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`;
       const apiData = await axios.get(API_URL);
       const apiVgByNameRawFirstFilt = apiData.data.results;
