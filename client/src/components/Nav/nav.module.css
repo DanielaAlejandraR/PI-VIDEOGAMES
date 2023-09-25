@@ -1,28 +1,35 @@
-.Container{
+.Container {
     background-color: rgb(7, 1, 18);
+    height: 90%;
 }
 
 .linksContainer {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    justify-content: space-evenly;
+}
 
+.logoutButton {
+    background-color: #df0f0fb7;
+    color: white;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 20px;
 }
 
 .activeLink {
     text-decoration: none;
     color:rgb(204, 218, 231);
     font-weight: bold;
-    font-size: 30px;
-
+    font-size: 40px;
 }
 
 .normalLink {
-    color: rgb(184, 170, 223);
-    font-size: 25px;
+    font-size: 35px;
+    color: white;
+    text-decoration: none; 
 }
-
 
 @media screen and (max-width: 767px) {
 .linksContainer {

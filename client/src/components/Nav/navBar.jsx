@@ -6,20 +6,26 @@ const Nav = ({handleClick}) =>{
     <div className={styles.Container} >
         <div className={styles.linksContainer}>
 
-        <NavLink 
-        onClick={handleClick} 
-        to="/home"
-        className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
-        >HOME</NavLink>
-        
+            <NavLink 
+            onClick={handleClick} 
+            to="/home"
+            className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
+            >HOME</NavLink>
+            
 
-        <NavLink
-        onClick={handleClick} 
-        to="/create"
-        className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
-        > CREATE VIDEOGAME
-        </NavLink>
-    </div>
+            <NavLink
+            onClick={handleClick} 
+            to="/create"
+            className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
+            > CREATE VIDEOGAME
+            </NavLink>
+
+            <div className={styles.logoutContainer}>
+            <button className={styles.logoutButton}
+            onClick={() => window.location.href = "/"}
+            >Log out</button>
+            </div>
+        </div>
     </div> 
     )
 }
