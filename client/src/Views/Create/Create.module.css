@@ -1,196 +1,157 @@
-/* MAIN CONTAINER */
 .mainContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 60%;
-    background-color: rgba(176, 142, 234, 0.739);
-    margin-top: 50px;
-    margin-left: 250px;
-  }
-  
-  /* FORM */
-  .formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin-top: 20px;
-    color:  rgb(8, 8, 8);
-  }
-  
-  .nameAndReleasedAndRatingContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 80%;
-    color:  rgb(8, 8, 8);
-    
-  }
-  
-  .label {
-    display: flex;
-    flex-direction: column;
-    margin: 7px;
-    padding: 1px;
-    justify-content: center;
-    align-items: center;
-    color: rgb(8, 8, 8);
-    font-size: 18px;
-  }
-  
-  .input {
-    width: 100%;
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-    border-radius:10px;
-    border: solid rgb(20, 1, 1) 1px;
-    background-color:aliceblue;
-    color: rgb(8, 8, 8);
-  }
-  
-  .nameInput {
-    width: 80%;
-    color: rgb(8, 8, 8);
-
-  }
-  
-  .dateInput {
-    width: fit-content;
-  }
-  
-  .ratingInput {
-    width: 100px;
-  }
-  
-  /* PLATFORMS */
-  .platformsContainer,
-  .checkboxContainer {
-    background-color: var(--mygrey3opaque);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    margin: 7px;
-    padding: 5px;
-    border-radius:10px;
-    border: solid rgb(9, 0, 0) 1px;
-  }
-  
-  .platformsSubContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    margin: 2px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* GENRES */
-  .checkboxSubcontainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2px;
-  }
-  
-  .genreLabel {
-    align-items: center;
-    margin: 5px;
-  }
-  
-  .genreInput {
-    margin: 5px;
-  }
-  
-  /* ERROR MESSAGE */
-  .errorMessage {
-    color: var(--myred2);
-    font-weight: bold;
-  }
-  
-  /* BUTTONS */
-  .buttonsContainer {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  /* SUBMIT */
-  .submitButton {
-    background-color: var(--mylightblue2);
-    color: rgb(230, 230, 25);
-    font-weight: bold;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    border: solid rgb(7, 1, 1) 4px;
-    font-size: 25px;
-    margin: 30px;
-  }
-  
-  .submitButton:hover {
-    background-color: var(--mylightblue);
-    color:aliceblue;;
-    font-size: 35px;
-    height: 60px;
-    width: 60px;
-  }
-  
-  /* RESET */
-  
-  .resetButton {
-    background-color: var(--myred);
-    color: rgb(26, 9, 9);
-    font-weight: bold;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    border: solid rgb(15, 11, 11) 4px;
-    font-size: 25px;
-    margin: 30px;
-  }
-  
-  .resetButton:hover {
-    background-color: var(--myred2);
-    color: black;
-    font-size: 35px;
-    height: 60px;
-    width: 60px;
-  }
-  
-.selectInput{
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  background-image: url("../../assets/backCreate.jpeg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;  
+  background-attachment: fixed;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
+  margin-top: 2%;
+}
+
+.nameAndReleasedAndRatingContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90%;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  padding: 2%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  background-color: rgba(4, 40, 55, 0.634);
+}
+
+.input {
+  width: 100%;
+  font-size: 18px;
   padding: 10px;
-  border: 1px solid #151313;
-  border-radius: 4px;
-  background-color: rgb(233, 186, 230);
-  font-size: 16px;
-  line-height: 1.5;
+  margin: 5px;
+  border-radius:10px;
+  border: solid white 1px;
+  margin-top: 20px;
 }
-.selectInput option:checked {
-  background-color: #c08b8b;
+
+.nameInput {
+  width: 80%;
 }
-  /* MEDIA QUERIES */
-  @media screen and (max-width: 1279px) {
-    .mainContainer {
-      flex-direction: column;
-    }
-    .formContainer {
-      width: 100%;
-    }
-    .nameAndReleasedAndRatingContainer {
-      flex-direction: column;
-    }
-    .preview {
-      width: 100%;
-    }
+
+.dateInput {
+  width: fit-content;
+}
+
+.ratingInput {
+  width: 100px;
+}
+
+.checkboxContainer {
+  background-color: var(--mygrey3opaque);
+  width: 70%;
+  margin: 10px;
+  padding: 10px;
+  border-radius:10px;
+  border: solid white 1px;
+}
+
+.checkboxSubcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 8px;
+}
+
+.genreLabel {
+  align-items: center;
+  margin: 9px;
+}
+
+.genreInput {
+  margin: 9px;
+}
+
+.errorMessage {
+  color: yellow;
+  font-weight: bold;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(4, 40, 55, 0.634);
+}
+
+.submitButton {
+  background-color: rgba(4, 40, 55, 0.634);
+  color: rgb(221, 218, 27);
+  font-weight: bold;
+  height: 60px;
+  width: 50%;
+  border: solid white 4px;
+  font-size: 35px;
+  margin: 30px;
+}
+
+.submitButton:hover {
+  background-color: rgb(31, 88, 149);
+  color:rgb(221, 218, 27);
+  font-size: 35px;
+  height: 60px;
+  width: 50%;
+}
+
+.resetButton {
+  background-color: rgba(4, 40, 55, 0.634);
+  color: rgb(233, 16, 16);
+  font-weight: bold;
+  height: 60px;
+  width: 55%;
+  border: solid white 4px;
+  font-size: 35px;
+  margin: 30px;
+}
+
+.resetButton:hover {
+  background-color: rgb(31, 88, 149);
+  color: rgb(233, 16, 16);
+  font-size: 35px;
+  height: 60px;
+  width: 55%;
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1279px) {
+  .mainContainer {
+    flex-direction: column;
   }
-  
-  @media screen and (max-width: 767px) {
-    .nameAndReleasedAndRatingContainer {
-      margin-top: 100px;
-    }
+  .formContainer {
+    width: 100%;
   }
+  .nameAndReleasedAndRatingContainer {
+    flex-direction: column;
+  }
+  .preview {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nameAndReleasedAndRatingContainer {
+    margin-top: 100px;
+  }
+}

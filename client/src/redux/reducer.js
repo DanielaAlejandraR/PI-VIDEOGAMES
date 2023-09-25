@@ -1,26 +1,26 @@
-import { GET_VIDEOGAMES, SEARCH_BY_NAME, RESET_FILTERS, FILTER_BY_CREATOR, FILTER_BY_GENRE, SORT_BY_ALPHABET, SORT_BY_RATING, UPDATE_PAGE_NUMBER, GET_GENRES, UPDATE_VG} from "./actions"; 
+import { GET_VIDEOGAMES, SEARCH_BY_NAME, RESET_FILTERS, FILTER_BY_CREATOR, FILTER_BY_GENRE, SORT_BY_ALPHABET, SORT_BY_RATING, UPDATE_PAGE_NUMBER, GET_GENRES, UPDATE_VG} from "./actions-types"; 
 
 //Estructura inicial del estado global
 const initialState = {
-    allVg: [],
+    videoGames: [],
+    genres: [],
     currentVg: [],
     currentPageNumber: 1,
     filteredByCreator: [],
     filteredByGenre: [],
-    genres: []
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_VIDEOGAMES: {//Se ejecuta en caso de que llegue una acción con este tipo
-            const allVg = action.payload;
+            const videoGames = action.payload;
             return {
                 ...state,//copio estado actual 
-                allVg: [...allVg],
-                filteredByCreator: [...allVg],
-                filteredByGenre: [...allVg],
-                currentVg: [...allVg]
+                videoGames: [...videoGames],
+                filteredByCreator: [...videoGames],
+                filteredByGenre: [...videoGames],
+                currentVg: [...videoGames]
             };
         };
 
@@ -41,7 +41,7 @@ const rootReducer = (state = initialState, action) => {
         };
 
         case RESET_FILTERS: {
-            const currentVg = state.allVg;
+            const currentVg = state.videoGames;
             return {
                 ...state,
                 currentVg
@@ -54,13 +54,13 @@ const rootReducer = (state = initialState, action) => {
             let filteredByCreator;
 
             if (creator === 'all') {
-                filteredByCreator = [...state.allVg];
+                filteredByCreator = [...state.videoGames];
             } else if (creator === 'db') {
-                filteredByCreator = [...state.allVg].filter(vg => {
+                filteredByCreator = [...state.videoGames].filter(vg => {
                     return isNaN(vg.id)
                 })
             } else if (creator === 'api') {
-                filteredByCreator = [...state.allVg].filter(vg => {
+                filteredByCreator = [...state.videoGames].filter(vg => {
                     return !isNaN(vg.id)
                 })
             };
@@ -86,9 +86,9 @@ const rootReducer = (state = initialState, action) => {
             let filteredByGenre;
 
             if (genre === 'allGenres') {
-                filteredByGenre = [...state.allVg];
+                filteredByGenre = [...state.videoGames];
             } else {
-                filteredByGenre = [...state.allVg].filter(vg => {
+                filteredByGenre = [...state.videoGames].filter(vg => {
                     return vg.genres.includes(genre);
                 })
             }; 
@@ -153,14 +153,14 @@ const rootReducer = (state = initialState, action) => {
 
         case UPDATE_VG: {
             const newVg = action.payload;
-            const allVg = [newVg, ...state.allVg];
+            const videoGames = [newVg, ...state.videoGames];
 
             return {
                 ...state,
-                allVg,
-                filteredByCreator: allVg,
-                filteredByGenre: allVg,
-                currentVg: allVg
+                videoGames,
+                filteredByCreator: videoGames,
+                filteredByGenre: videoGames,
+                currentVg: videoGames
             };
         };
 
@@ -173,4 +173,3 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
-

@@ -53,12 +53,7 @@ export const validateGenres = (updatedGenres) => {
 };
 
 export const validatePlatforms = (platforms) => {
-    console.log('platforms[0]: ', platforms[0]);
-    const emptyFields = platforms.includes('');
-    const exceededCharacters = platforms.some(platform => platform.length > 50);
-    if (platforms[0] === '') return "The first platform cannot be empty.";
-    if (emptyFields) return "The platform fields cannot be empty. If needed, delete the platform.";
-    if (exceededCharacters) return "Max 50 characters for each platform";
+    if(!platforms.length) return "Chose at least one platform.";
     return "";
 };
 

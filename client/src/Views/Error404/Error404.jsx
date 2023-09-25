@@ -5,11 +5,11 @@ import styles from "./error404.module.css";
 const Error404 = () => {
     return (
     <div className={styles.mainContainer}>
-        <h2 className={styles.errorCode}>Error 404</h2>
+        
         <h1 className={styles.errorMessage}>Page not found</h1>
 
         <Link to={`/home`}>
-        <button className={styles.goBackButton}>Go back home</button>
+        <button className={styles.goBackButton}>Go back home!</button>
         </Link>
     </div>
     );
