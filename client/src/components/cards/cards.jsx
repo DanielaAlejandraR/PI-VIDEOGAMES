@@ -23,7 +23,7 @@ const Cards = (props) => {
       ) : (
         <div>
           {!currentVg.length ? ( // Si currentVg está vacío
-            <div className={styles.loadingContainer}>
+            <div>
               <Loading />
             </div>
           ) : ( // Si currentVg no está vacío

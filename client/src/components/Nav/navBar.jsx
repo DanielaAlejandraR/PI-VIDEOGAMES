@@ -12,7 +12,6 @@ const Nav = ({handleClick}) =>{
         className={({ isActive }) => isActive ? styles.activeLink : styles.normalLink}
         >HOME</NavLink>
         
-        <h1 className={styles.textV}>VIDEOGAMES</h1>
 
         <NavLink
         onClick={handleClick} 

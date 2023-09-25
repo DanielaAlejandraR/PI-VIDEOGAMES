@@ -14,9 +14,9 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_VIDEOGAMES: {//Se ejecuta en caso de que llegue una acción con este tipo
-            const videoGames = action.payload;
+            const videoGames = action.payload;//extrae lista de vg
             return {
-                ...state,//copio estado actual 
+                ...state,//copio estado actual para asegurar que no se modifiquen las propiedades no relacionadas con la acción 
                 videoGames: [...videoGames],
                 filteredByCreator: [...videoGames],
                 filteredByGenre: [...videoGames],
@@ -50,8 +50,7 @@ const rootReducer = (state = initialState, action) => {
 
         case FILTER_BY_CREATOR: {
             const creator = action.payload;
-
-            let filteredByCreator;
+            let filteredByCreator;//variable para almacenar los vg filtrados
 
             if (creator === 'all') {
                 filteredByCreator = [...state.videoGames];
@@ -129,7 +128,7 @@ const rootReducer = (state = initialState, action) => {
 
 
         case SORT_BY_RATING: {
-            const order = action.payload;       // 'ratingAsc' or 'ratingDesc'
+            const order = action.payload;    
             const compareFunction = ((a, b) => {
                 return a.rating - b.rating;
             });
@@ -163,7 +162,6 @@ const rootReducer = (state = initialState, action) => {
                 currentVg: videoGames
             };
         };
-
 
         default: //Retorna el estado sin cambios si no se reconoce la acción
             return {

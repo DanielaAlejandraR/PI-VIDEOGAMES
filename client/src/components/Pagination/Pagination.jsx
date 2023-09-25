@@ -1,19 +1,14 @@
-import styles from "./pagination.module.css";
-import { useDispatch, useSelector } from "react-redux"; //Gestionar estado global 
+import { useDispatch, useSelector } from "react-redux"; 
 import { updatePageNumber } from "../../redux/actions";
 
+import styles from "./pagination.module.css";
+
 const Pagination = (props) => {
-
     const dispatch = useDispatch();
-
-    // Obtiene el número de página actual del estado global
-    const currentPageNumber = Number(
-        useSelector((state) => state.currentPageNumber)
-    );
-
+    const currentPageNumber = Number(useSelector((state) => state.currentPageNumber));//función useSelector para obtener el número de página actual del estado global de Redux y lo convierte en un número. Esto se almacena en la variable currentPageNumber
     let { numberOfPages } = props;
 
-    // Crea un array con números de página para generar los botones
+    // Crea un array con números de página del 1 al #pags para generar los botones
     const pageNumbersArray = [];
     for (let i = 1; i <= numberOfPages; i++) {
     pageNumbersArray.push(i);
@@ -53,16 +48,14 @@ const Pagination = (props) => {
 
     return(
         <div className={styles.mainContainer}>
-
             <div className={styles.arrows}>
-        <button className={`${styles.button}${styles.arrowButton}${currentPageNumber === 1 ? styles.disabled : ""}`}
+              <button className={`${styles.button}${currentPageNumber === 1 ? styles.disabled : ""}`}
                 onClick={handleFirstPage}
                 disabled={currentPageNumber === 1}>{"<<"}</button>   
 
-        <button className={`${styles.button}${styles.arrowButton}${currentPageNumber === 1 ? styles.disabled : ""}`}
-            onClick={handlePrev}
-            disabled={currentPageNumber === 1}>{"<"}</button>
-
+              <button className={`${styles.button}${currentPageNumber === 1 ? styles.disabled : ""}`}
+                  onClick={handlePrev}
+                  disabled={currentPageNumber === 1}>{"<"}</button>
         </div>
         
         {pageNumbersArray.map((pageNumber) => {
@@ -77,15 +70,9 @@ const Pagination = (props) => {
             onClick={handleUpdatePageNumber}
             >{pageNumber}</button>
         );})}
-
-        <div className={`${styles.pageButtonSmallDevice} ${styles.isActive}`}>
-                {`${currentPageNumber} / ${numberOfPages}`}
-              </div>
-
-              {/* ARROWS */}
+      
               <div className={styles.arrows}>
-                <button className={`${styles.button}${styles.arrowButton}
-                                ${
+                <button className={`${styles.button}${
                                   currentPageNumber === numberOfPages
                                     ? styles.disabled
                                     : ""
@@ -95,7 +82,7 @@ const Pagination = (props) => {
                 >{">"}</button>
 
                 <button
-                  className={`${styles.button}${styles.arrowButton}${
+                  className={`${styles.button}${
                                   currentPageNumber === numberOfPages
                                     ? styles.disabled
                                     : ""

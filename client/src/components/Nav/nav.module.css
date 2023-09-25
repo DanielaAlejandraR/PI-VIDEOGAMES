@@ -1,36 +1,26 @@
 .Container{
-    height: 78px;
-    align-items: center;
-    background-color: rgb(111, 64, 190);
+    background-color: rgb(7, 1, 18);
 }
 
 .linksContainer {
-    display: none;
-    flex-direction: row;
-    margin-left: 105px;
     display:flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-around;
     margin-bottom: 20px;
-}
 
-.textV{
-    color: aliceblue;
 }
 
 .activeLink {
     text-decoration: none;
-    margin: 12px;
-    color:aliceblue;
+    color:rgb(204, 218, 231);
     font-weight: bold;
-    font-size: 24px;
+    font-size: 30px;
 
 }
 
 .normalLink {
-    margin: 10px;
-    color: rgb(225, 204, 231);
-    font-size: 22px;
+    color: rgb(184, 170, 223);
+    font-size: 25px;
 }
 
 

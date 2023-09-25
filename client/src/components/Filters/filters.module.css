@@ -1,32 +1,30 @@
 .mainContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 100%;
-    justify-content: center;
-    margin-top: 30px;
+    width: 70%;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-left: 26%;
+    background-color: rgba(86, 66, 240, 0.616);
   }
   
   .searchbarContainer {
     display: flex;
     direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 350px;
-    height: 30px;
+    width: 28%;
+    height: 35px;
     border-radius: 5px;
-    background-color: rgba(242, 32, 204, 0.455);
-    border: 1px solid var(--mygrey4);
+    background-color: rgb(25, 1, 21);
+    border: 1px solid ;
     color: white;
   }
   
   .searchInput {
-    width: 320px;
-    border-radius: 5px;
+    width: 80%;
     background-color: transparent;
-    border: transparent;
-    color: rgb(233, 242, 243);
-    font-size: 18px;
+    color: rgb(233, 234, 243);
+    font-size: 19px;
   }
   
   .searchInput::placeholder {
@@ -42,28 +40,22 @@
   }
   
   .searSubmitButton{
-    font-size: 17px;
-    height: 32px;
+    font-size: 19px;
+    height: 35px;
     width: 75px;
-    background-color:rgb(242, 235, 18);
-    border: none;
+    background-color:rgba(242, 235, 18, 0.818);
     border-radius: 5px;
     cursor: pointer;
   }
   
   .searchSubmitButton:hover {
-    background-color: var(--mygray4);
-    background-color: var(--mylightblue2);
+    background-color: violet;
   }
 
   .filtersAndSortsContainer {
     display: flex;
     flex-direction: row;
-    height: 30px;
     border-radius: 5px;
-    margin-top: 15px;
-    align-items: center;
-    justify-content: center;
   }
   
   .creatorSelect,
@@ -71,10 +63,10 @@
   .sortSelect,
   .resetButton {
     width: 150px;
-    background-color:  rgb(111, 64, 190);
+    height: 50px;
+    background-color:  rgb(6, 0, 17);
     border: 1px solid var(--mygrey4);
     color:aliceblue;
-    height: 100%;
     border-radius: 10px;
     margin: 5px;
     font-size: 18px;

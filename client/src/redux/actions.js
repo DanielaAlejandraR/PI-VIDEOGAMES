@@ -1,16 +1,15 @@
 import axios from "axios";
 import { GET_VIDEOGAMES, UPDATE_PAGE_NUMBER, SEARCH_BY_NAME, FILTER_BY_GENRE,  GET_GENRES, GET_DETAIL, UPDATE_VG, FILTER_BY_CREATOR, RESET_FILTERS, SORT_BY_ALPHABET, SORT_BY_RATING } from "./actions-types"; 
 
-
 export const getVideoGames = () => {
     const API_URL = '/videogames'; 
     return async (dispatch) => {
     try{
         const response = await axios.get(API_URL);
-        const VideoGames = response.data;
-    dispatch({//Dispara la acción con el tipo y envía VideoGames como carga útil para actualizar el estado con la lista de videojuegos obtenida.
-        type: GET_VIDEOGAMES,
-        payload: VideoGames
+        const VideoGames = response.data;//Se extraen la lista de videojuegos y se almacenan en la variable VideoGames.
+    dispatch({//Dispara la acción 
+        type: GET_VIDEOGAMES,//tipo de acción 
+        payload: VideoGames//lista de videoGames como carga util
 });
     }catch(error){
         alert(error.message);
@@ -44,7 +43,7 @@ export const searchByName = (vgName) => {
             const vgByName = response.data;
             dispatch({
                 type: SEARCH_BY_NAME,
-                payload: vgByName//carga útil para actualizar el estado con los videojuegos coincidentes.
+                payload: vgByName
             });
         } catch (error) {
             alert("No se encontraron coincidencias.");
